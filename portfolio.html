@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aditya Kumar | CSE Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #08090d;
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #6c63ff;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -200px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #00d9ff;
+            filter: blur(180px);
+            opacity: 0.08;
+            bottom: -200px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 9, 13, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #7c73ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        section {
+            padding: 110px 8%;
+        }
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero {
+            max-width: 800px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid rgba(124,115,255,0.35);
+            background: rgba(124,115,255,0.08);
+            color: #a7a1ff;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 95px);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #8d84ff, #42d9ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #9b9ca3;
+            max-width: 650px;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: white;
+            color: #08090d;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+        }
+
+        .secondary {
+            border: 1px solid #33343c;
+            color: white;
+        }
+
+        .secondary:hover {
+            background: #16171e;
+            transform: translateY(-3px);
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 35px;
+            left: 8%;
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #7c73ff;
+            letter-spacing: 3px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #999aa2;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 30px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid #202127;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            border-color: #45424f;
+        }
+
+        .stat h3 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 12px 18px;
+            border: 1px solid #292a32;
+            background: #111218;
+            border-radius: 8px;
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            border-color: #7c73ff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            padding: 30px;
+            min-height: 300px;
+            background: linear-gradient(145deg, #121319, #0d0e12);
+            border: 1px solid #202127;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #7168ff;
+            filter: blur(90px);
+            opacity: 0;
+            transition: 0.4s;
+            right: -50px;
+            top: -50px;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: #383742;
+        }
+
+        .project:hover::before {
+            opacity: 0.2;
+        }
+
+        .project-number {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .project h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .project p {
+            color: #85868d;
+            font-size: 14px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .project-tags span {
+            font-size: 11px;
+            padding: 5px 9px;
+            background: #1b1c23;
+            color: #999;
+            border-radius: 5px;
+        }
+
+        .education {
+            border-left: 1px solid #292a31;
+            padding-left: 30px;
+            max-width: 800px;
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .education-item::before {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7c73ff;
+            left: -35px;
+            top: 7px;
+            box-shadow: 0 0 15px #7c73ff;
+        }
+
+        .education-item span {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .education-item h3 {
+            margin: 8px 0;
+            font-size: 22px;
+        }
+
+        .education-item p {
+            color: #888;
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 80px 30px;
+            border: 1px solid #25262d;
+            border-radius: 25px;
+            background: radial-gradient(circle at center, #151620, #0c0d11);
+        }
+
+        .contact-box h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .socials a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 9px 15px;
+            border: 1px solid #292a31;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            color: white;
+            border-color: #7c73ff;
+        }
+
+        footer {
+            padding: 30px 8%;
+            border-top: 1px solid #18191f;
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 12px;
+        }
+
+        @media(max-width: 850px) {
+            nav ul {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .contact-box h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media(max-width: 500px) {
+            section {
+                padding: 90px 6%;
+            }
+
+            nav {
+                padding: 18px 6%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">A<span>K</span>.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <section id="home">
+
+        <div class="hero">
+
+            <div class="tag">B.Tech CSE Student • Developer • Learner</div>
+
+            <h1>
+                Hi, I'm <span>Aditya.</span>
+            </h1>
+
+            <p>
+                A Computer Science student who enjoys turning ideas into
+                working programs, learning how things work, and building
+                projects that are actually useful.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Let's Connect</a>
+            </div>
+
+        </div>
+
+        <div class="scroll">
+            SCROLL ↓
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="section-title">
+            <small>01 — About Me</small>
+            <h2>A little about me.</h2>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I'm currently pursuing my B.Tech in Computer Science
+                    Engineering. I'm building my foundation in programming,
+                    problem solving, databases and web development.
+                </p>
+
+                <p>
+                    I like understanding the logic behind things rather than
+                    simply memorizing code. From Java programs and data
+                    structures to designing web pages, I'm constantly
+                    experimenting and improving.
+                </p>
+
+                <p>
+                    Outside academics, I'm also a big gaming enthusiast.
+                    Games are one of the things that keep me curious about
+                    storytelling, design and technology.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h3>01</h3>
+                    <p>Computer Science Student</p>
+                </div>
+
+                <div class="stat">
+                    <h3>∞</h3>
+                    <p>Things I Want To Learn</p>
+                </div>
+
+                <div class="stat">
+                    <h3>Java/HTML/CSS/DBMS</h3>
+                    <p>Current Programming Focus</p>
+                </div>
+
+                <div class="stat">
+                    <h3>🚀</h3>
+                    <p>Always Building</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="skills">
+
+        <div class="section-title">
+            <small>02 — Skills</small>
+            <h2>What I work with.</h2>
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">Java</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">C</div>
+            <div class="skill">DBMS</div>
+            <div class="skill">Data Structures</div>
+            <div class="skill">Problem Solving</div>
+            <div class="skill">OOP</div>
+            <div class="skill">Git</div>
+            <div class="skill">Web Development</div>
+
+        </div>
+
+    </section>
+
+
+    <section id="projects">
+
+        <div class="section-title">
+            <small>03 — Projects</small>
+            <h2>Things I've built.</h2>
+        </div>
+
+        <div class="projects">
+
+            <div class="project">
+
+                <div>
+                    <div class="project-number">01 / JAVA</div>
+
+                    <h3>Student Utility Programs</h3>
+
+                    <p>
+                        A collection of beginner-friendly Java programs
+                        covering arrays, searching, sorting, conditions,
+                        loops and basic problem solving.
+                    </p>
+                </div>
+
+                <div class="project-tags">
+                    <span>Java</span>
+                    <span>Arrays</span>
+                    <span>Logic</span>
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div>
+                    <div class="project-number">02 / WEB</div>
+
+                    <h3>Online Shopping System</h3>
+
+                    <p>
+                        A conceptual shopping platform where users can
+                        browse products, manage a cart, make payments
+                        and track their orders.
+                    </p>
+                </div>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>DBMS</span>
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div>
+                    <div class="project-number">03 / STARTUP IDEA</div>
+
+                    <h3>Pick Up My Laundry</h3>
+
+                    <p>
+                        A hostel-focused laundry service concept designed
+                        to make washing and ironing clothes easier and
+                        affordable for students.
+                    </p>
+                </div>
+
+                <div class="project-tags">
+                    <span>Idea</span>
+                    <span>Business</span>
+                    <span>Students</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="education">
+
+        <div class="section-title">
+            <small>04 — Education</small>
+            <h2>My journey so far.</h2>
+        </div>
+
+        <div class="education">
+
+            <div class="education-item">
+
+                <span>2026 — Present</span>
+
+                <h3>B.Tech — Computer Science Engineering</h3>
+
+                <p>
+                    Currently developing a strong foundation in programming,
+                    databases, digital electronics, algorithms and
+                    software development.
+                </p>
+
+            </div>
+
+
+            <div class="education-item">
+
+                <span>Completed</span>
+
+                <h3>Senior Secondary Education</h3>
+
+                <p>
+                    Studied Physics, Chemistry, Mathematics and Computer
+                    Science, building the foundation for my journey into
+                    technology.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="contact">
+
+        <div class="contact-box">
+
+            <h2>Let's build something.</h2>
+
+            <p>
+                Have an idea, project or just want to connect?
+                Feel free to reach out.
+            </p>
+
+             <a href="#contact-info" class="btn primary">
+             Get In Touch
+             </a>
+
+            <div class="socials">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>© 2026 Aditya Kumar</p>
+
+        <p>Designed & Built with HTML + CSS</p>
+
+    </footer>
+
+</body>
+</html>
