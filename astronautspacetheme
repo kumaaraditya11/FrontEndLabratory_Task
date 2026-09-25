@@ -18,7 +18,6 @@
       overflow-x: hidden;
     }
 
-    /* Aurora effect */
     .aurora {
       position: fixed;
       top: 0;
@@ -36,7 +35,6 @@
       to   { transform: translateY(-30px) translateX(30px); }
     }
 
-    /* Stars */
     .star {
       position: absolute;
       width: 4px;
@@ -51,7 +49,6 @@
       to   { opacity: 1; transform: scale(1.2); }
     }
 
-    /* Shooting stars (fixed direction) */
     .shooting-star {
       position: absolute;
       width: 2px;
@@ -66,7 +63,6 @@
       to   { transform: translateX(300px) translateY(-300px) rotate(45deg); opacity: 0; }
     }
 
-    /* Moving planets */
     .planet {
       position: absolute;
       border-radius: 50%;
@@ -157,7 +153,6 @@
 </head>
 <body>
 
-  <!-- Aurora overlay -->
   <div class="aurora"></div>
 
   <!-- Stars sprinkled -->
@@ -168,16 +163,13 @@
   <div class="star" style="top:75%; left:80%;"></div>
   <div class="star" style="top:85%; left:35%;"></div>
 
-  <!-- Shooting stars -->
   <div class="shooting-star" style="top:20%; left:10%;"></div>
   <div class="shooting-star" style="top:50%; left:30%; animation-delay:1.5s;"></div>
 
-  <!-- Moving planets -->
   <div class="planet" style="top:30%; left:10%; width:120px; height:120px; background:#3498db;"></div>
   <div class="planet" style="top:70%; left:60%; width:180px; height:180px; background:#e67e22; animation-delay:20s;"></div>
   <div class="planet" style="top:50%; left:80%; width:100px; height:100px; background:#9b59b6; animation-delay:40s;"></div>
 
-  <!-- Hamburger Dropdown -->
   <div class="dropdown position-fixed top-0 start-0 m-3">
     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <div class="hamburger">
@@ -195,7 +187,6 @@
     </ul>
   </div>
 
-  <!-- Welcome Section -->
   <div class="container content" id="home">
     <h1>
       Welcome to ISRO 🌌
@@ -208,15 +199,12 @@
     <p>India’s pride in space exploration — advancing science, technology, and innovation for the nation and the world.</p>
   </div>
 
-  <!-- About Section -->
   <div id="about" class="section container text-center">
     <h2>About ISRO</h2>
     <hr>
     <p>The Indian Space Research Organisation (ISRO) is India’s national space agency, founded in 1969. It has played a pivotal role in satellite launches, planetary exploration, and advancing space technology for societal benefit.</p>
   </div>
 
-  <!-- Missions Section -->
-    <!-- Missions Section -->
   <div id="missions" class="section container">
     <h2 class="text-center">Major Missions</h2>
     <hr>
@@ -242,14 +230,12 @@
     </div>
   </div>
 
-  <!-- Achievements Section -->
   <div id="achievements" class="section container text-center">
     <h2>Achievements</h2>
     <hr>
     <p>ISRO has successfully launched hundreds of satellites, developed indigenous launch vehicles like PSLV and GSLV, and positioned India as a global leader in affordable space technology.</p>
   </div>
 
-  <!-- Contact Section -->
   <div id="contact" class="section container text-center">
     <h2>Contact ISRO</h2>
     <hr>
@@ -257,7 +243,6 @@
     <p>ISRO Headquarters, Bengaluru, India</p>
   </div>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
