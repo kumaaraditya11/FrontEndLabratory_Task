@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3e8ff;
+}
+
+nav {
+    background: #6d28d9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ddd6fe;
+}
+
+.page {
+    text-align: center;
+    background: white;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px #00000020;
+}
+
+.page h1 {
+    color: #6d28d9;
+}
+
+.page p {
+    color: #374151;
+    font-size: 18px;
+}
